@@ -1,0 +1,156 @@
+.featured
+  padding-top: 52px
+  background: linear-gradient(310deg,rgba(173,16,40,.5), #181733 50%)
+  &_wrapper
+    display: flex
+    height: 650px
+    padding-top: 50px
+    justify-content: space-between
+  &_info
+    flex: 1 1 50%
+    padding-top: 200px
+  &_img
+    flex: 1 1 50%
+    background: url('../../images/messi.png') center / contain no-repeat
+    height: 600px
+
+.home-matches
+  .container
+    margin-top: 20px
+    padding-top: 50px
+    padding-bottom: 30px
+    background-color: #fff
+    border-radius: 5px
+  &_header
+    margin-right: 150px
+    margin-left: 30px
+    background-image: linear-gradient(to right, rgb(24, 23, 51) 0px, rgb(24, 23, 51) 20%, rgb(103, 16, 40))
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    font-family: 'Signika', sans-serif
+
+.countdown
+  display: flex
+  align-items: center
+  &_header
+    font-size: 1.2rem
+    font-style: italic
+    font-weight: bold
+    margin-right: 30px
+  &_clock
+    display: flex
+  &_count, &_label
+    display: block
+    width: 60px
+    color: #181733
+    font-family: 'Helvetica', serif
+    font-weight: 600
+    font-size: 2rem
+    text-align: center
+  &_label
+    font-size: 0.8rem
+
+.next-match
+  display: flex
+  border: 1px solid #ccc
+  width: 600px
+  margin: 50px auto 0 auto
+  padding: 5px 0 20px 0
+  > div
+    flex-grow: 1
+  &_info
+    display: flex
+    flex-direction: column
+    align-items: center
+    text-align: center
+  &_versus
+    display: inline-block
+    padding: 0 10px 10px 10px
+  &_stadium
+    margin-bottom: 10px
+  &_home-logo, &_away-logo
+    flex-basis: 20%
+    background: url('../../images/FC-Barcelona.png') center / 100px no-repeat
+  &_competition
+    width: 150px
+    height: 80px
+    background: url('../../images/la_liga.png') center / contain no-repeat
+  
+.kickoff
+  &_text
+    font-size: 0.7rem
+  &_value
+    font-size: 2.5rem
+
+.match-list
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  list-style: none
+  width: 1100px
+  margin-top: 20px
+  &_item
+    flex: 1 0 47%
+    border: 1px solid #ccc
+    display: flex
+    padding: 20px
+    box-sizing: border-box
+    margin-right: 20px
+    margin-bottom: 20px
+  &_left
+    flex-basis: 60%
+    border-right: 1px solid #ccc
+  &_right
+    padding-left: 20px
+  &_row
+    display: flex
+    align-items: center
+  &_logo
+    width: 30px
+    height: 30px
+    margin-right: 15px
+    background: center / contain no-repeat
+  &_team
+    font-size: 1.5rem
+    flex-basis: 60%
+  &_score
+    font-size: 1.5rem
+
+.promotion
+  height: 600px
+  margin-top: 30px
+  margin-bottom: 50px
+  .container
+    position: relative
+    height: 100%
+  &_bg
+    height: 100%
+    background: url('../../images/Champions_8_1600x700_Napoli.jpg') no-repeat center / cover
+    filter: drop-shadow(16px 16px 20px blue) brightness(0.3) saturate(30%)
+  &_wrapper
+    position: absolute
+    display: flex
+    flex-flow: wrap column
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  &_header
+    text-align: center
+    font-size: 2.5rem
+    margin-top: 50px
+    margin-bottom: 80px
+  &_descr
+    text-align: center
+    font-size: 1.2rem
+
+.enroll
+  &_title
+    text-align: center
+    margin-bottom: 10px
+    font-size: 1.5rem
+  &_input
+    display: flex
+    width: 300px
+    input
+      margin-right: 3px
+
