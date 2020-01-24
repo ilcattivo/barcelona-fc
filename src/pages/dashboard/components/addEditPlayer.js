@@ -87,8 +87,6 @@ const AddEditPlayer = ({ match }) => {
     }
   };
 
-  console.log();
-
   if (redirect) return <Redirect to='/admin_players' />;
 
   return (

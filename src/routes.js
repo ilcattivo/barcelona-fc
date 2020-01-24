@@ -11,14 +11,13 @@ import Matches from './pages/dashboard/components/matches';
 import AddEditMatch from './pages/dashboard/components/addEditMatch';
 import Players from './pages/dashboard/components/players';
 import AddEditPlayer from './pages/dashboard/components/addEditPlayer';
-
-import { firebase } from './firebase';
+import Squad from './pages/squad';
 
 export default ({ user }) => {
   return (
     <Layout>
       <Switch>
-        <Route path='/' exact component={Home} />
+        <PublicRoute path='/' exact component={Home} />
         <PublicRoute
           path='/login'
           exact
@@ -26,6 +25,7 @@ export default ({ user }) => {
           restricted
           user={user}
         />
+        <PublicRoute path='/team_squad' exact component={Squad} />
         <PrivateRoute
           path='/dashboard'
           exact
