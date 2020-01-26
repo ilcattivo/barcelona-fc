@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Slide } from 'react-reveal';
+import { Link } from 'react-router-dom';
 
 import { firebaseMatches } from '../../firebase';
 import { firebaseLooper } from '../../components/misc';
@@ -64,11 +65,12 @@ const HomeMatches = () => {
           {loading && <CircularProgress />}
           {renderMatches(matches)}
         </ul>
-        <button
+        <Link
+          to='/matches'
           className='btn btn-warning mx-auto'
           style={{ width: '200px', display: 'block' }}>
           See all matches
-        </button>
+        </Link>
       </div>
     </section>
   );

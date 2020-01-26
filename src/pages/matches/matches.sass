@@ -1,0 +1,43 @@
+.matches
+  margin-top: 60px
+  &_spinner_wrapper
+    min-height: 600px
+    display: flex
+    align-items: center
+    justify-content: center
+  .container
+    display: flex
+    .left
+      flex-grow: 1
+      background-color: #fff
+    .right
+      flex-basis: 350px
+      border-left: 1px solid #ccc
+      background-color: #f8f8f8
+  &_filters
+    display: flex
+    border-bottom: 1px solid #000
+  &_list
+    list-style: none
+    padding-left: 0
+
+.filter-box
+  padding: 14px
+  border-right: 1px solid #000
+  .btn
+    background-color: #181733
+    color: #fff
+    font-size: 0.9rem
+    padding: .25rem .5rem
+    &.active
+      background-color: #154284
+  &_label
+    margin-bottom: 6px
+
+.league-table
+  tr:nth-child(even)
+    background-color: #fff
+  &_title
+    background: url('../../images/la_liga.svg') 80% center / 120px no-repeat
+    padding: 24px
+    padding-left: 40px

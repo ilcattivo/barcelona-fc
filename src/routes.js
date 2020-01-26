@@ -7,11 +7,12 @@ import Login from './pages/login';
 import Dashboard from './pages/dashboard';
 import PrivateRoute from './components/authRoutes/privateRoute';
 import PublicRoute from './components/authRoutes/publicRoute';
-import Matches from './pages/dashboard/components/matches';
+import AdminMatches from './pages/dashboard/components/matches';
 import AddEditMatch from './pages/dashboard/components/addEditMatch';
 import Players from './pages/dashboard/components/players';
 import AddEditPlayer from './pages/dashboard/components/addEditPlayer';
 import Squad from './pages/squad';
+import Matches from './pages/matches';
 
 export default ({ user }) => {
   return (
@@ -26,6 +27,7 @@ export default ({ user }) => {
           user={user}
         />
         <PublicRoute path='/team_squad' exact component={Squad} />
+        <PublicRoute path='/matches' exact component={Matches} />
         <PrivateRoute
           path='/dashboard'
           exact
@@ -35,7 +37,7 @@ export default ({ user }) => {
         <PrivateRoute
           path='/admin_matches'
           exact
-          component={Matches}
+          component={AdminMatches}
           user={user}
         />
         <PrivateRoute
