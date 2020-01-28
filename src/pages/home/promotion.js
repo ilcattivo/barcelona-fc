@@ -1,37 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import HeadShake from 'react-reveal/HeadShake';
+import { useForm } from 'react-hook-form';
 
 import { firebasePromotions } from '../../firebase';
-// import { validate } from '../../components/misc';
-// import FormField from '../../components/formField';
 
 const Promotion = () => {
-  const [email, setEmail] = useState('');
+  const { register, handleSubmit, errors } = useForm({
+    reValidateMode: 'onSubmit'
+  });
   const [isLoading, setIsLoading] = useState(false);
+  const [formSuccess, setFormSuccess] = useState(false);
 
-  const submitForm = e => {
-    e.preventDefault();
+  const validateEmail = async email => {
     setIsLoading(true);
-  };
 
-  useEffect(() => {
-    if (!isLoading) return;
-
-    firebasePromotions
+    const res = await firebasePromotions
       .orderByChild('email')
       .equalTo(email)
-      .once('value')
-      .then(snapshot => {
-        if (snapshot.val() === null) {
-          firebasePromotions.push({ email });
-          setIsLoading(false);
-          console.log('Congratulations');
-        } else {
-          setIsLoading(false);
-          console.log('Email already exists');
-        }
-      });
-  }, [isLoading, email]);
+      .once('value');
+
+    setIsLoading(false);
+    if (res.val()) return false;
+    else return true;
+  };
+
+  const onSubmit = async ({ email }) => {
+    setIsLoading(true);
+    await firebasePromotions.push({ email });
+    setIsLoading(false);
+    setFormSuccess(true);
+    setTimeout(() => setFormSuccess(false), 2000);
+  };
 
   return (
     <section className='promotion'>
@@ -44,18 +43,35 @@ const Promotion = () => {
           <p className='promotion_descr text-light'>
             Feel the Champions League magic at Camp Nou
           </p>
-          <form onSubmit={submitForm}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <HeadShake>
               <div className='text-light enroll_title'>Enter your email</div>
             </HeadShake>
             <div className='enroll_input mx-auto'>
               <input
-                type='email'
                 className='form-control'
                 placeholder='example@mail.com'
-                value={email}
-                onChange={e => setEmail(e.target.value)}
+                name='email'
+                ref={register({
+                  required: true,
+                  pattern: /\S+@\S+\.\S+/,
+                  validate: validateEmail
+                })}
               />
+              {errors.email && errors.email.type === 'required' && (
+                <span className='text-danger'>This field is required</span>
+              )}
+              {errors.email && errors.email.type === 'pattern' && (
+                <span className='text-danger'>Incorrect email</span>
+              )}
+              {errors.email && errors.email.type === 'validate' && (
+                <span className='text-danger'>Email already exists</span>
+              )}
+              {formSuccess && (
+                <span className='text-success'>
+                  You have successfully subscribed
+                </span>
+              )}
               <button className='btn btn-warning' disabled={isLoading}>
                 Send
               </button>
@@ -68,56 +84,3 @@ const Promotion = () => {
 };
 
 export default Promotion;
-
-// const formItems = {
-//   email: {
-//     element: 'input',
-//     value: '',
-//     config: {
-//       id: 'email',
-//       name: 'email_input',
-//       type: 'email',
-//       placeholder: 'Enter your email'
-//     },
-//     validation: {
-//       required: true,
-//       email: true
-//     },
-//     isValid: false,
-//     validationMessage: ''
-//   }
-// };
-
-// const [formError, setFormError] = useState(false);
-// const [formSuccess, setFormSuccess] = useState(false);
-// const [formData, setFormData] = useState(formItems);
-
-// const updateForm = e => {
-//   const elementId = e.target.id;
-//   const newFormData = { ...formData };
-//   const newElement = { ...newFormData[elementId] };
-//   newElement.value = e.target.value;
-//   const [isValid, validationMessage] = validate(newElement);
-//   newElement.isValid = isValid;
-//   newElement.validationMessage = validationMessage;
-//   newFormData[elementId] = newElement;
-//   setFormError(false);
-//   setFormData(newFormData);
-// };
-
-// const submitForm = e => {
-//   e.preventDefault();
-//   let dataToSubmit = {};
-//   let formIsValid = true;
-
-//   for (let key in formData) {
-//     dataToSubmit[key] = formData[key].value;
-//     formIsValid = formData[key].isValid && formIsValid;
-//   }
-
-//   if (formIsValid) {
-//     // send form
-//   } else {
-//     setFormError(true);
-//   }
-// };

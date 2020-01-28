@@ -149,8 +149,14 @@
     margin-bottom: 10px
     font-size: 1.5rem
   &_input
+    position: relative
     display: flex
-    width: 300px
+    justify-content: center
+    .text-danger, .text-success
+      position: absolute
+      bottom: -35px
+      text-align: center
     input
       margin-right: 3px
+      width: 220px
 

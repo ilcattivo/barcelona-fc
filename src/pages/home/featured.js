@@ -1,5 +1,5 @@
 import React from 'react';
-import { Fade, Slide } from 'react-reveal';
+import { Fade } from 'react-reveal';
 
 const Featured = () => {
   return (
