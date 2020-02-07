@@ -1,4 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## FC Barcelona
+SPA with admin dashboard
+Open [https://barcelona-6d271.firebaseapp.com/](https://barcelona-6d271.firebaseapp.com/) to view it in the browser.
+
+
+his project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
